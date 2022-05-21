@@ -31,7 +31,7 @@ class _DrawerPageState extends State<DrawerPage> {
           ),
           DrawerListTile(
             iconData: Icons.local_mall,
-            title: "Shop",
+            title: "Category",
             onTilePressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(builder: (_) => ProductView()));

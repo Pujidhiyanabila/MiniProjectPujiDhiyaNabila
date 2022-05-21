@@ -1,54 +1,29 @@
-import 'package:beautyshining/components/drawer_page.dart';
 import 'package:beautyshining/components/style.dart';
-import 'package:beautyshining/pages/detail_page.dart';
-import 'package:beautyshining/providers/product_view_model.dart';
+import 'package:beautyshining/providers/women_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class HomePage extends StatefulWidget {
-  static const route = "/home";
-
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
+class WomenView extends StatelessWidget {
+  const WomenView({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Belanja Sini"),
-        backgroundColor: ColorStyles.secondaryColor,
+        title: Text("Women's Clothing"),
         centerTitle: true,
-        // actions: [
-        //   IconButton(
-        //     onPressed: (){
-        //       // showModalBottomSheet(
-        //       //   shape: const RoundedRectangleBorder(
-        //       //     borderRadius: BorderRadius.vertical(
-        //       //       top: Radius.circular(20),
-        //       //     ),
-        //       //   ),
-        //       //   context: context, 
-        //       //   builder: (context) => const ProfilePage(),
-        //       // );
-        //     },
-        //     icon: Icon(Icons.search),
-        //   ),
-        // ],
+        backgroundColor: ColorStyles.secondaryColor,
       ),
       backgroundColor: ColorStyles.primaryColor,
-      drawer: DrawerPage(),
       body: FutureBuilder<void>(
-        future: Provider.of<ProductViewModel>(context, listen: false).getAllProduct(),
+        future: Provider.of<WomenViewModel>(context, listen: false).getAllProduct(),
         builder: (context, AsyncSnapshot<void> snapshot){
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(
               child: CircularProgressIndicator(),
             );
           } else {
-            final list = Provider.of<ProductViewModel>(context).list;
+            final list = Provider.of<WomenViewModel>(context).womenlist;
 
             return GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -57,10 +32,7 @@ class _HomePageState extends State<HomePage> {
               ),
               itemBuilder: (ctx, index){
                 return InkWell(
-                  onTap: () {
-                    // Navigator.of(context).push(
-                    // MaterialPageRoute(builder: (_) => DetailProductPage()));
-                  },
+                  onTap: () {},
                   child: Card(
                     elevation: 5,
                     shape: RoundedRectangleBorder(

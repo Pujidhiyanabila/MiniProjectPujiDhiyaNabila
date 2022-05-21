@@ -38,7 +38,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
           ),
           TabData(
               iconData: Icons.local_mall,
-              title: "Shop",
+              title: "Category",
               onclick: () => Navigator.of(context)
                   .push(MaterialPageRoute(builder: (context) => HomePage()))
           ),
